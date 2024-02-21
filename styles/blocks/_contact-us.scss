@@ -1,9 +1,12 @@
 .contact-us {
     position: relative;
-    padding: 60px 100px 80px;
-    background-color: var(--color-gray);
-    border-radius: var(--border-radius-large);
-    overflow-x: hidden;
+
+    @include mobile-above {
+        padding: 60px 100px 80px;
+        background-color: var(--color-gray);
+        border-radius: var(--border-radius-large);
+        overflow-x: hidden;
+    }
 
     &::after {
         --contactUsImageOffseY: 62px;
@@ -16,19 +19,51 @@
         height: calc(100% - var(--contactUsImageOffseY) * 2);
         aspect-ratio: 1;
         background: url('../../images/contact-us-bg.svg') center/contain no-repeat;
+    
+        @include tablet {
+            display: none;
+        }
     }
     
-
     &__form {
         display: flex;
-        flex-direction: column;
-        row-gap: 40px;
-        max-width: 556px;
+        flex-direction: column;   
+
+        @include tablet-above {
+            max-width: 556px;
+        }
+
+        @include mobile-above {
+            row-gap: 40px;
+        }
+    }
+
+    &__request-type,
+    &__body {
+        @include mobile {
+            background-color: var(--color-gray);
+        }
+    }
+
+    &__request-type {
+        @include mobile {
+            display: flex;
+            justify-content: center;
+            padding: 40px 52px 36px;
+            border-radius: var(--border-radius-large) var(--border-radius-large) 0 0;
+        }
     }
 
     &__body {
         display: flex;
         flex-direction: column;
         row-gap: 25px;
+
+        @include mobile {
+            padding: 10px 30px 50px;
+            margin-bottom: 30px;
+            border-radius: 0 0 var(--border-radius-large) var(--border-radius-large);
+            row-gap: 20px;
+        }
     }  
 }
